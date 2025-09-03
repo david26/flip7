@@ -94,7 +94,7 @@ body {
     margin-left: 2% !important;
   }
 
-  input[type="text"] {
+  .input-score {
     height: 20px !important;
     width: 50px !important;
     font-size: 15px;
@@ -256,5 +256,4 @@ input[type="text"] {
 
 .btn-remove:hover {
   background: rgba(45, 2, 77, 0.45) !important;
-
 }

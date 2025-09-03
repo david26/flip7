@@ -49,6 +49,7 @@ const PlayerList = ({ users, round, updateScore, deleteUser, showConfirmation })
           </div>
           <div className="div-input-ronda">
             <input
+              className='input-score'
               type="text"
               value={n.scores[round - 1]}
               onChange={(e) => handleChangeEvent(e, n.id)}
