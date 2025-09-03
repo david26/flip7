@@ -67,7 +67,7 @@ body {
   font-size: 35px;
 }
 
-@media only screen and (max-width: 390px) {
+@media only screen and (max-width: 430px) {
   .main {
     min-height: 100vh;
     width: 98%;
