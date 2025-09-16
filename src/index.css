@@ -66,7 +66,59 @@ body {
   padding-left: 20px;
   font-size: 35px;
 }
+/* iphone rotated*/
+@media only screen and (orientation: landscape) and (max-width: 932px) {
+  .gamer {
+    justify-content: center !important;
+  }
+  .main {
+    min-height: 100vh;
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+  }
+  .div-name {
+    font-size: 30px !important;
+    width: 200px !important;
+  }
+  .alias {
+    font-size: 25px !important;
+  }
+  .div-score {
+    min-width: 70px !important;
+    width: 70px !important;
+    padding-left: 1px !important;
+    font-size: 30px !important;
+  }
 
+  .div-img {
+    width: 70 !important;
+    margin-left: 2% !important;
+  }
+
+  .input-score {
+    height: 20px !important;
+    width: 50px !important;
+    font-size: 14px;
+    font-family: "Roboto";
+    text-align: right;
+    margin-left: 10px !important;
+  }
+  .div-img {
+    width: 100px !important;
+  }
+  img {
+    width: 30px !important;
+    position: relative;
+  }
+  .btn-remove {
+    height: 25px !important;
+    width: 25px !important;
+    font-size: 10px !important;
+  }
+}
+/** iphone*/
 @media only screen and (max-width: 430px) {
   .main {
     min-height: 100vh;
