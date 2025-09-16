@@ -102,7 +102,6 @@ const UserModal = ({ onClose, onSave }) => {
               value={alias}
               onChange={(e) => setAlias(e.target.value)}
               style={modalStyles.input}
-              required
             />
           </div>
           <div style={{ textAlign: 'right' }}>

@@ -37,7 +37,7 @@ const PlayerList = ({ users, round, updateScore, deleteUser, showConfirmation })
         <div key={n.id} className={index === 0 ? "gamer frozen" : "gamer"}>
           <div className="div-name">
             <span className="name roboto-900">{n.name}</span>
-            <span className="alias roboto-100"> ({n.alias}) </span>
+            {n.alias !== '' && <span className="alias roboto-100"> ({n.alias}) </span>}
           </div>
           <div className="div-score">
             <span className="score roboto-900">{n.sum}</span>
