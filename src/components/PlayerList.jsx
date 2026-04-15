@@ -51,6 +51,8 @@ const PlayerList = ({ users, round, updateScore, deleteUser, showConfirmation })
             <input
               className='input-score'
               type="text"
+              pattern='[0-9]*'
+              inputmode="numeric"
               value={n.scores[round - 1]}
               onChange={(e) => handleChangeEvent(e, n.id)}
               onBlur={(e) => handleBlurEvent(e, n.id)}
