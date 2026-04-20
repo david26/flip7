@@ -62,7 +62,7 @@ export default function App() {
   };
 
   const handleSaveUser = ({ name, alias }) => {
-    if(name==="af"){
+    if(name==="af" || name.toLowerCase() === 'fam'){
       const atz = { id: crypto.randomUUID(), name:'Atz', alias:'', scores: new Array(round).fill(0), sum: 0, type: 'zero' };
       const dogtor = { id: crypto.randomUUID(), name:'Dogtor', alias:'', scores: new Array(round).fill(0), sum: 0, type: 'zero' };
       const sal = { id: crypto.randomUUID(), name:'Salinas', alias:'', scores: new Array(round).fill(0), sum: 0, type: 'zero' };
@@ -71,9 +71,10 @@ export default function App() {
       const dav = { id: crypto.randomUUID(), name:'Baby', alias:'', scores: new Array(round).fill(0), sum: 0, type: 'zero' };
       const jul = { id: crypto.randomUUID(), name:'Juls', alias:'', scores: new Array(round).fill(0), sum: 0, type: 'zero' };
       const mu = { id: crypto.randomUUID(), name:'Mau', alias:'', scores: new Array(round).fill(0), sum: 0, type: 'zero' };
+      const y = { id: crypto.randomUUID(), name:'Pat', alias:'', scores: new Array(round).fill(0), sum: 0, type: 'zero' };
 
       const newUsers = [...game.users];
-      newUsers.push(atz,dogtor,sal,gio,che,dav,jul,mu);
+      newUsers.push(atz,dogtor,sal,gio,che,dav,jul,mu,y);
       setGame({ users: newUsers });
     } else {
     const newUser = {
