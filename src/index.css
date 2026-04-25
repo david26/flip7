@@ -188,6 +188,10 @@ img {
   overflow: hidden;
 }
 
+.frozen div span{
+  font-size: 30px;
+}
+
 .snowFlake {
   color: rgb(0, 213, 255);
   position: absolute;
@@ -230,6 +234,14 @@ input[type="text"] {
   height: 40px;
   align-items: center;
   padding: 4px;
+}
+
+.div-game-controls-bottom {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  align-items: center;
 }
 
 .div-game-round {

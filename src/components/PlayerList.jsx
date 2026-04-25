@@ -1,10 +1,48 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSwipeable } from 'react-swipeable';
 import zero from '../assets/0.png';
 import one from '../assets/1.png';
 import ice from '../assets/congelar.png';
-import { faRemove } from '@fortawesome/free-solid-svg-icons';
 
+const PlayerRow = ({ n, index, round, updateScore, deleteUser, showConfirmation, handleChangeEvent, handleBlurEvent, handleFocus }) => {
+  
+  const handlers = useSwipeable({
+    onSwipedRight: () => showConfirmation('Deseas quitar al jugador ' + n.name, () => deleteUser(n.id)),
+    onSwipedLeft: () => showConfirmation('Deseas quitar al jugador ' + n.name, () => deleteUser(n.id)),
+    preventScrollOnSwipe: true,
+    trackMouse: true, // Allows testing swipe on desktop
+  });
+
+  return (
+    <div {...handlers} className={index === 0 ? "gamer frozen" : "gamer"}>
+      <div className="div-name">
+        <span className="name roboto-900">{n.name}</span>
+        {n.alias !== '' && <span className="alias roboto-100"> ({n.alias}) </span>}
+      </div>
+      <div className="div-score">
+        <span className="score roboto-900">{n.sum}</span>
+      </div>
+      <div className="div-img">
+        {n.type === 'zero' && <img src={zero} alt="Zero" />}
+        {n.type === 'one' && <img src={one} alt="one" />}
+        {n.type === 'ice' && <img src={ice} alt="frozen" />}
+      </div>
+      <div className="div-input-ronda">
+        <input
+          className='input-score'
+          type="text"
+          pattern='[0-9]*'
+          inputmode="numeric"
+          value={n.scores[round - 1]}
+          onChange={(e) => handleChangeEvent(e, n.id)}
+          onBlur={(e) => handleBlurEvent(e, n.id)}
+          onFocus={handleFocus}
+          placeholder="e.g., 23"
+        />
+      </div>
+    </div>
+  );
+};
 
 const PlayerList = ({ users, round, updateScore, deleteUser, showConfirmation }) => {
 
@@ -34,39 +72,18 @@ const PlayerList = ({ users, round, updateScore, deleteUser, showConfirmation })
   return (
     <>
       {users.map((n, index) => (
-        <div key={n.id} className={index === 0 ? "gamer frozen" : "gamer"}>
-          <div className="div-name">
-            <span className="name roboto-900">{n.name}</span>
-            {n.alias !== '' && <span className="alias roboto-100"> ({n.alias}) </span>}
-          </div>
-          <div className="div-score">
-            <span className="score roboto-900">{n.sum}</span>
-          </div>
-          <div className="div-img">
-            {n.type === 'zero' && <img src={zero} alt="Zero" />}
-            {n.type === 'one' && <img src={one} alt="one" />}
-            {n.type === 'ice' && <img src={ice} alt="frozen" />}
-          </div>
-          <div className="div-input-ronda">
-            <input
-              className='input-score'
-              type="text"
-              pattern='[0-9]*'
-              inputmode="numeric"
-              value={n.scores[round - 1]}
-              onChange={(e) => handleChangeEvent(e, n.id)}
-              onBlur={(e) => handleBlurEvent(e, n.id)}
-              onFocus={handleFocus}
-              placeholder="e.g., 23"
-            />
-          </div>
-
-          <div className="div-controls">
-            <button
-              onClick={() => showConfirmation('Deseas quitar al jugador ' + n.name, () => deleteUser(n.id))}
-              className="btn-remove"><FontAwesomeIcon icon={faRemove} /></button>
-          </div>
-        </div>
+        <PlayerRow 
+          key={n.id}
+          n={n}
+          index={index}
+          round={round}
+          updateScore={updateScore}
+          deleteUser={deleteUser}
+          showConfirmation={showConfirmation}
+          handleChangeEvent={handleChangeEvent}
+          handleBlurEvent={handleBlurEvent}
+          handleFocus={handleFocus}
+        />
       ))}
     </>
   );
